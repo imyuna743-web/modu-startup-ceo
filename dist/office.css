@@ -1,0 +1,44 @@
+.office-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,.38fr);gap:18px;align-items:start}
+.office-figure,.office-controls{margin:0;background:white;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.office-stage{position:relative;isolation:isolate;overflow:hidden;aspect-ratio:4/3;background:#e9e6df}
+.office-backdrop{position:absolute;width:100%;height:100%;object-fit:cover}
+.office-stage::before{content:"";position:absolute;z-index:1;inset:65% 0 0;background:linear-gradient(transparent,#55493c2b);pointer-events:none}
+.office-figure figcaption{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.office-figure figcaption span,.office-controls p{font-size:.875rem;color:var(--sub)}
+.office-controls{padding:20px;display:grid;gap:18px}
+.office-controls p{margin:-8px 0 0}
+.office-picker{border:0;margin:0;padding:0;min-width:0}
+.office-picker legend{font-weight:750;margin-bottom:8px;padding:0}
+.office-picker>div{display:flex;flex-wrap:wrap;gap:6px}
+.office-picker button{min-height:42px;padding:6px 12px;display:inline-flex;justify-content:center;align-items:center;gap:6px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:650;font-size:.875rem}
+.office-picker button img{width:25px;height:27px;object-fit:contain}
+.office-picker button[aria-pressed=true]{color:var(--brand-strong);background:var(--brand-soft);border-color:var(--brand)}
+.office-picker:disabled{opacity:.5}
+.office-meet{justify-self:start}
+.rug-swatch{width:16px;height:16px;border-radius:50%;border:1px solid #0002}
+.rug-oat{--rug:#debd91}.rug-sage{--rug:#96ad8d}.rug-denim{--rug:#818eab}
+.rug-swatch,.office-rug{background-color:var(--rug)}
+.office-rug{position:absolute;z-index:1;width:56%;height:11%;bottom:5%;left:22%;border-radius:50%;box-shadow:inset 0 0 0 2px #fff9,inset 0 0 0 5px #fff2,0 2px 1px #0003;background-image:repeating-linear-gradient(4deg,transparent 0 3px,#ffffff23 3px 4px)}
+.office-decor{position:absolute;z-index:2;height:22%;max-width:19%;object-fit:contain;bottom:13%;filter:drop-shadow(0 3px 2px #392b2a39)}
+.office-left{left:7%}.office-right{right:7%}
+.office-walker{position:absolute;z-index:3;left:29%;bottom:8%;height:35%;width:18%;display:flex;justify-content:center;align-items:flex-end;animation:office-walk 17s ease-in-out infinite alternate}
+.office-walker::after{content:"";position:absolute;z-index:-1;bottom:-1%;width:56%;height:5%;background:#3a302843;border-radius:50%;filter:blur(2px)}
+.office-sprite{display:block;max-width:100%;height:100%;object-fit:contain;object-position:center bottom;animation:office-step 1s ease-in-out infinite}
+.office-companion{left:21%;height:14%;width:11%;bottom:7%;animation:office-follow 17s ease-in-out infinite alternate}
+.office-companion .office-sprite{animation-delay:-.3s}
+@keyframes office-walk{0%,15%{transform:translate(0,0)}50%,63%{transform:translate(95%,-3%)}90%,100%{transform:translate(155%,0)}}
+@keyframes office-follow{0%,19%{transform:translate(0,0)}53%,66%{transform:translate(155%,-11%)}95%,100%{transform:translate(260%,0)}}
+@keyframes office-step{0%,75%,100%{transform:translateY(0) rotate(0)}40%{transform:translateY(-2%) rotate(1deg)}}
+@media(max-width:850px){.office-layout{grid-template-columns:1fr}.office-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.office-controls p,.office-meet{grid-column:1/-1}.office-stage{aspect-ratio:3/2}}
+@media(max-width:480px){.office-controls{grid-template-columns:1fr;padding:16px}.office-figure figcaption{padding:12px 15px}}
+@media(prefers-reduced-motion:reduce){.office-walker,.office-sprite{animation:none}}
+.office-picker button:disabled{opacity:.58;cursor:default}
+.furnishing-shop header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.furnishing-shop section{margin-top:24px}.furnishing-shop h2{font-size:1.125rem;margin:0 0 10px}
+.furnishing-rack{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,168px),1fr));gap:12px}
+.furnishing-card{border:1px solid var(--line);border-radius:16px;padding:14px;background:white}
+.furnishing-card h3{margin:12px 0 4px}.furnishing-card p{margin:0 0 10px;color:var(--sub)}
+.furnishing-card button{width:100%;text-align:center;justify-content:center}
+.furnishing-art{height:100px;display:grid;place-items:center;background:#f4f4ef;border-radius:10px}
+.furnishing-art img{height:85px;width:100%;object-fit:contain}
+.shop-rug{height:43px;width:106px;background:repeating-linear-gradient(4deg,transparent 0 3px,#ffffff38 3px 4px),var(--rug);border-radius:50%;box-shadow:inset 0 0 0 3px #fff6,0 2px 3px #382f242f}

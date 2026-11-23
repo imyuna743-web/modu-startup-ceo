@@ -1,0 +1,11 @@
+import {GLOSSARY} from './glossary.js';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+export function shuffle(list,rng=Math.random){const a=[...list];for(let i=a.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+export function newMatch(category='all',rng=Math.random){let pool=GLOSSARY.filter(x=>category==='all'||x.category===category);if(pool.length<5)pool=GLOSSARY;const terms=shuffle(pool,rng).slice(0,5);return {terms,definitions:shuffle(terms,rng),matched:[],selected:{},attempts:0,feedback:'단어 하나와 그 뜻을 차례로 선택해 주세요.',wrong:false};}
+export function selectMatch(game,side,id){
+ if(!['term','definition'].includes(side)||game.matched.includes(id)||!game.terms.some(t=>t.id===id))return game;
+ const n={...game,selected:{...(game.wrong?{}:game.selected),[side]:id},wrong:false};
+ if(n.selected.term&&n.selected.definition){n.attempts++;if(n.selected.term===n.selected.definition){n.matched=[...n.matched,id];n.selected={};n.feedback=n.matched.length===n.terms.length?'모든 짝을 찾았어요!':'정답이에요. 다음 짝을 찾아보세요.';}else{n.wrong=true;n.feedback='아직 짝이 맞지 않아요. 단어와 뜻을 다시 골라보세요.';}}
+ return n;
+}
+export function matchView(g){return `<div class="match-game"><p>단어와 뜻을 연결하는 창업 단어장</p><div class="match-progress"><b>${g.matched.length} / ${g.terms.length}쌍</b><span>시도 ${g.attempts}회</span></div><div class="match-columns">${[['term',g.terms,'단어'],['definition',g.definitions,'뜻']].map(([side,items,label])=>`<div><h3>${label}</h3>${items.map(t=>`<button data-action="wiki-match-pick" data-side="${side}" data-id="${t.id}" class="match-tile ${g.matched.includes(t.id)?'matched':g.selected[side]===t.id?(g.wrong?'wrong':'chosen'):''}" aria-pressed="${g.selected[side]===t.id}" ${g.matched.includes(t.id)?'disabled':''}>${g.matched.includes(t.id)?'✓ ':''}${esc(side==='term'?t.term:t.definition)}</button>`).join('')}</div>`).join('')}</div><p class="match-feedback ${g.wrong?'negative':'positive'}" role="status" aria-live="polite">${g.feedback}</p>${g.matched.length===g.terms.length?`<div class="match-complete">정확도 ${Math.round(g.terms.length/g.attempts*100)}% · ${g.terms.length}개 용어 복습 완료</div>`:''}<div class="modal-actions"><button class="quiet" data-action="wiki-match">새 문제</button><button class="primary" data-action="close">단어장으로</button></div></div>`;}

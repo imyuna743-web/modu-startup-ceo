@@ -1,0 +1,13 @@
+#modal[data-flow="settings"]{width:min(380px,calc(100vw - 32px))}
+.volume-panel{padding:18px 20px;background:#f4f7fb;border-radius:16px}
+.volume-panel .music-toggle,.volume-panel .volume-label{display:flex;align-items:center;justify-content:space-between;font-weight:700}
+.volume-panel .volume-label{margin-top:22px}
+.volume-panel output{font-variant-numeric:tabular-nums;color:#345aa0}
+.volume-panel input[type=range]{width:100%;margin:12px 0 0;accent-color:#456cba}
+#modal .volume-done,.game-dock button{display:flex;justify-content:center;align-items:center;text-align:center}
+#modal .volume-done{width:100%;margin-top:16px}
+.opinion-grid{display:grid;gap:12px;margin:14px 0}
+.opinion-card{background:#f8fafb;border:1px solid #d9e1ea;border-radius:14px;padding:15px}
+.opinion-card header{display:flex;align-items:center;gap:8px}.opinion-card h3{margin:0;color:#27634c}.opinion-card[data-stance="조건부"] h3{color:#845e22}.opinion-card[data-stance="반대"] h3{color:#98474a}
+.opinion-card ul{list-style:none;padding:0;margin:12px 0;display:grid;gap:8px}.opinion-card li{display:flex;align-items:center;gap:10px}.opinion-card li p{margin:2px 0;font-size:.9rem}.opinion-card li small,.opinion-card header span{color:#52627b}.opinion-card .adviser-mini{flex:none}
+.opinion-outcome{display:grid;gap:4px;padding:10px 0}.opinion-card button{width:100%;text-align:center;justify-content:center}

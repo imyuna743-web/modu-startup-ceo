@@ -1,0 +1,469 @@
+[
+  {
+    "id": "pandemic",
+    "label": "팬데믹",
+    "headline": "팬데믹: 거리에 사람이 뜸해졌다",
+    "dur": 12,
+    "follow": "m_pandemic_1",
+    "branches": [
+      {
+        "id": "hold",
+        "follow": "m_pandemic_hold",
+        "label": "버티기",
+        "text": "비용을 줄이고\n지나가기를 기다린다",
+        "fx": {
+          "fixedCostPct": -15,
+          "morale": -5
+        },
+        "out": "줄일 수 있는 것을 다 줄였다."
+      },
+      {
+        "id": "pivot",
+        "follow": "m_pandemic_pivot",
+        "label": "전환",
+        "text": "배달·온라인으로\n사업을 바꾼다",
+        "fx": {
+          "burn": -1,
+          "product": -4,
+          "worldDemand": 0.3
+        },
+        "out": "파는 방식을 통째로 바꿨다."
+      },
+      {
+        "id": "seize",
+        "follow": "m_pandemic_seize",
+        "label": "기회 포착",
+        "text": "빈자리를 싸게 구해\n거점을 늘린다",
+        "req": {
+          "g": {
+            "capital": [
+              40,
+              100
+            ]
+          },
+          "minRunway": 4
+        },
+        "hint": "자본 40 이상, 런웨이 4개월 이상 필요",
+        "fx": {
+          "burn": -2,
+          "capacity": 1,
+          "fixedCost": 150
+        },
+        "out": "남들이 나갈 때 들어갔다.",
+        "later": {
+          "after": 8,
+          "fx": {
+            "demandMod": 0.25
+          },
+          "text": "싸게 잡은 자리가 거리와 함께 살아났다."
+        }
+      },
+      {
+        "id": "exit",
+        "label": "철수",
+        "text": "지금 정리하고\n더 잃지 않는다",
+        "end": "close",
+        "out": "문을 닫았다."
+      }
+    ]
+  },
+  {
+    "id": "oilwar",
+    "label": "산유국 전쟁",
+    "headline": "산유국 전쟁: 기름값과 물류비가 뛰었다",
+    "dur": 9,
+    "follow": "m_oilwar_1",
+    "branches": [
+      {
+        "id": "hold",
+        "follow": "m_oilwar_hold",
+        "label": "버티기",
+        "text": "가격을 그대로 두고\n이윤을 줄인다",
+        "fx": {
+          "arpuMod": -0.05,
+          "rel": {
+            "customer": 6
+          }
+        },
+        "out": "손님들은 가격을 올리지 않은 걸 알아줬다."
+      },
+      {
+        "id": "pivot",
+        "follow": "m_oilwar_pivot",
+        "label": "전환",
+        "text": "원가가 덜 드는\n상품으로 바꾼다",
+        "fx": {
+          "product": -5,
+          "worldCost": -0.1,
+          "custPct": -5
+        },
+        "out": "원가가 높은 항목을 빼자 판매 목록이 절반으로 줄었다."
+      },
+      {
+        "id": "seize",
+        "follow": "m_oilwar_seize",
+        "label": "기회 포착",
+        "text": "물량을 미리 사서\n값을 묶어 둔다",
+        "req": {
+          "minRunway": 4
+        },
+        "hint": "런웨이 4개월 이상 필요",
+        "fx": {
+          "burn": -1.5,
+          "worldCost": -0.15
+        },
+        "out": "창고를 빌렸다."
+      },
+      {
+        "id": "exit",
+        "label": "철수",
+        "text": "지금 정리하고\n더 잃지 않는다",
+        "end": "close",
+        "out": "문을 닫았다."
+      }
+    ]
+  },
+  {
+    "id": "fx",
+    "label": "환율 급변",
+    "headline": "환율 급변: 원화 가치가 한 달 만에 크게 변했다",
+    "dur": 9,
+    "follow": "m_fx_1",
+    "branches": [
+      {
+        "id": "hold",
+        "follow": "m_fx_hold",
+        "label": "버티기",
+        "text": "환율이 돌아오기를\n기다린다",
+        "fx": {
+          "morale": -2
+        },
+        "out": "매일 아침 환율부터 본다."
+      },
+      {
+        "id": "pivot",
+        "follow": "m_fx_pivot",
+        "label": "전환",
+        "text": "국내에서 사고\n국내에 판다",
+        "fx": {
+          "product": -3,
+          "worldCost": -0.06
+        },
+        "out": "거래처 목록을 새로 만들었다."
+      },
+      {
+        "id": "seize",
+        "follow": "m_fx_seize",
+        "label": "기회 포착",
+        "text": "환율이 유리한 쪽으로\n판로를 넓힌다",
+        "req": {
+          "g": {
+            "career": [
+              34,
+              100
+            ]
+          }
+        },
+        "hint": "경력 34 이상: 해외 거래 경험",
+        "fx": {
+          "burn": -0.8,
+          "demandMod": 0.12,
+          "health": -5
+        },
+        "out": "시차에 맞춰 전화를 걸었다."
+      },
+      {
+        "id": "exit",
+        "label": "철수",
+        "text": "지금 정리하고\n더 잃지 않는다",
+        "end": "close",
+        "out": "문을 닫았다."
+      }
+    ]
+  },
+  {
+    "id": "boom",
+    "label": "주식 시장 폭등",
+    "headline": "주식 시장 폭등: 돈이 넘쳐난다",
+    "dur": 12,
+    "follow": "m_boom_1",
+    "branches": [
+      {
+        "id": "hold",
+        "follow": "m_boom_hold",
+        "label": "버티기",
+        "text": "하던 대로 한다.\n들뜨지 않는다",
+        "fx": {
+          "morale": -3
+        },
+        "out": "회식 자리에서 다들 남의 회사 이야기를 했다."
+      },
+      {
+        "id": "pivot",
+        "follow": "m_boom_pivot",
+        "label": "전환",
+        "text": "성장 지표 중심으로\n회사를 바꾼다",
+        "fx": {
+          "brand": 8,
+          "hiddenRisk": 8,
+          "health": -5
+        },
+        "out": "발표 자료의 첫 장이 바뀌었다."
+      },
+      {
+        "id": "seize",
+        "follow": "m_boom_seize",
+        "label": "기회 포착",
+        "text": "지금 투자를 받고\n출구를 준비한다",
+        "req": {
+          "minRev": 500
+        },
+        "hint": "월 매출 500만 원 이상 필요",
+        "fx": {
+          "cash": 15000,
+          "equity": -8,
+          "fund": 2
+        },
+        "out": "투자 설명회 일정을 잡았다."
+      },
+      {
+        "id": "exit",
+        "label": "철수",
+        "text": "값이 좋을 때\n정리한다",
+        "end": "close",
+        "out": "문을 닫았다."
+      }
+    ]
+  },
+  {
+    "id": "crash",
+    "label": "주식 시장 폭락",
+    "headline": "주식 시장 폭락: 돈줄이 말랐다",
+    "dur": 15,
+    "follow": "m_crash_1",
+    "branches": [
+      {
+        "id": "hold",
+        "follow": "m_crash_hold",
+        "label": "버티기",
+        "text": "지출을 줄이고\n현금을 지킨다",
+        "fx": {
+          "fixedCostPct": -20,
+          "morale": -8
+        },
+        "out": "줄일 순서대로 줄였다."
+      },
+      {
+        "id": "pivot",
+        "follow": "m_crash_pivot",
+        "label": "전환",
+        "text": "싼 상품을 내고\n흑자부터 낸다",
+        "fx": {
+          "arpuMod": -0.08,
+          "worldDemand": 0.12,
+          "product": -2
+        },
+        "out": "가격표의 맨 윗줄이 바뀌었다."
+      },
+      {
+        "id": "seize",
+        "follow": "m_crash_seize",
+        "label": "기회 포착",
+        "text": "문을 닫는 경쟁사의\n고객과 직원을 받아들인다",
+        "req": {
+          "minRunway": 6
+        },
+        "hint": "런웨이 6개월 이상 필요",
+        "fx": {
+          "burn": -1.5,
+          "custPct": 15,
+          "team": 1
+        },
+        "out": "경쟁자의 단골 명단이 넘어왔다."
+      },
+      {
+        "id": "exit",
+        "label": "철수",
+        "text": "지금 정리하고\n더 잃지 않는다",
+        "end": "close",
+        "out": "문을 닫았다."
+      }
+    ]
+  },
+  {
+    "id": "policy",
+    "label": "정부 정책 변화",
+    "headline": "정부 정책 변화: 규칙이 바뀌었다",
+    "dur": 18,
+    "follow": "m_policy_1",
+    "branches": [
+      {
+        "id": "hold",
+        "follow": "m_policy_hold",
+        "label": "버티기",
+        "text": "최소한만 맞추고\n지켜본다",
+        "fx": {
+          "hiddenRisk": 8
+        },
+        "out": "다른 곳들이 어떻게 하는지 지켜보기로 했다."
+      },
+      {
+        "id": "pivot",
+        "follow": "m_policy_pivot",
+        "label": "전환",
+        "text": "새 기준에 맞춰\n운영을 바꾼다",
+        "fx": {
+          "burn": -0.8,
+          "hiddenRisk": -12,
+          "product": 2
+        },
+        "out": "체크리스트가 생겼다."
+      },
+      {
+        "id": "seize",
+        "follow": "m_policy_seize",
+        "label": "기회 포착",
+        "text": "새 기준을 먼저 충족하고\n그 점을 내세운다",
+        "req": {
+          "g": {
+            "edu": [
+              41,
+              100
+            ]
+          }
+        },
+        "hint": "학력 41 이상: 규정 문서를 읽어 내는 선택",
+        "fx": {
+          "burn": -1.2,
+          "hiddenRisk": -20,
+          "brand": 8,
+          "reputation": 5
+        },
+        "out": "인증 마크를 간판 옆에 붙였다."
+      },
+      {
+        "id": "exit",
+        "label": "철수",
+        "text": "지금 정리하고\n더 잃지 않는다",
+        "end": "close",
+        "out": "문을 닫았다."
+      }
+    ]
+  },
+  {
+    "id": "alien",
+    "label": "외계인 침공",
+    "headline": "외계인 침공: 도시 상공에 무언가 떠 있다",
+    "dur": 3,
+    "follow": "m_alien_1",
+    "branches": [
+      {
+        "id": "hold",
+        "follow": "m_alien_hold",
+        "label": "버티기",
+        "text": "문을 닫고\n떠나기를 기다린다",
+        "fx": {
+          "health": 5,
+          "morale": -3
+        },
+        "out": "셔터를 내렸다."
+      },
+      {
+        "id": "pivot",
+        "follow": "m_alien_pivot",
+        "label": "전환",
+        "text": "대피소에 필요한 것을\n판다",
+        "fx": {
+          "worldDemand": 0.35,
+          "reputation": 4,
+          "health": -6
+        },
+        "out": "줄이 생겼다."
+      },
+      {
+        "id": "seize",
+        "follow": "m_alien_seize",
+        "label": "기회 포착",
+        "text": "다들 문을 닫을 때\n재건을 준비한다",
+        "req": {
+          "minRunway": 4
+        },
+        "hint": "런웨이 4개월 이상 필요",
+        "fx": {
+          "burn": -1
+        },
+        "out": "자재와 재고를 미리 확보했다.",
+        "later": {
+          "after": 4,
+          "fx": {
+            "demandMod": 0.3
+          },
+          "text": "거리가 다시 열리자 준비한 것이 팔리기 시작했다."
+        }
+      },
+      {
+        "id": "exit",
+        "label": "철수",
+        "text": "지금 정리하고\n가족에게 간다",
+        "end": "close",
+        "out": "문을 닫았다."
+      }
+    ]
+  },
+  {
+    "id": "ai",
+    "label": "인공지능 붐",
+    "headline": "인공지능 붐: 모두가 AI를 말한다",
+    "dur": 14,
+    "follow": "m_ai_1",
+    "branches": [
+      {
+        "id": "hold",
+        "follow": "m_ai_hold",
+        "label": "버티기",
+        "text": "하던 일을 계속한다.\n필요한 곳에만 쓴다",
+        "fx": {
+          "product": 2
+        },
+        "out": "제품 소개서는 그대로다."
+      },
+      {
+        "id": "pivot",
+        "follow": "m_ai_pivot",
+        "label": "전환",
+        "text": "제품의 중심을\nAI로 옮긴다",
+        "fx": {
+          "burn": -1,
+          "brand": 10,
+          "product": -4,
+          "worldDemand": 0.1
+        },
+        "out": "로드맵을 새로 그렸다."
+      },
+      {
+        "id": "seize",
+        "follow": "m_ai_seize",
+        "label": "기회 포착",
+        "text": "AI 인력을 뽑고\n큰 투자를 받는다",
+        "req": {
+          "minRev": 400
+        },
+        "hint": "월 매출 400만 원 이상 필요",
+        "fx": {
+          "cash": 25000,
+          "equity": -12,
+          "team": 2,
+          "fixedCost": 200
+        },
+        "out": "채용 공고의 연봉을 두 번 올렸다."
+      },
+      {
+        "id": "exit",
+        "label": "철수",
+        "text": "값이 좋을 때\n정리한다",
+        "end": "close",
+        "out": "문을 닫았다."
+      }
+    ]
+  }
+]
